@@ -9,6 +9,18 @@
   </head>
 
   <body>
+
+
+    <ul class="nav nav-tabs">
+      <% if logged_in? %>
+        <li><%= link_to current_user.user_name %></li> <!-- , _url -->
+        <li><%= link_to 'Logout' %></li> <!-- , sessions_url, method: :delete -->
+      <% else %>
+        <li><%= link_to 'New User' %></li> <!-- , new_user_url -->
+        <li><%= link_to 'Login' %></li> <!-- , sessions_new_url -->
+      <% end %>
+    </ul>
+
     <%= yield %>
   </body>
 </html>
