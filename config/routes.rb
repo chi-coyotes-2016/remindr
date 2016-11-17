@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root 'application#index'
   
 
-  get '/sessions/new' => 'sessions#new'
-  post '/sessions' => 'sessions#create'
+  get '/sessions/new', to: 'sessions#new', as: :new_session
+  post '/sessions', to: 'sessions#create'
   delete '/sessions' => 'sessions#destroy'
   
   resources :users do
