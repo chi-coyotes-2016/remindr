@@ -1,12 +1,6 @@
 <h1 class="register-page-header">Register a new user</h1>
 <div>
-	<% if @errors  %>
-		<ul>
-		<% @errors.each do |error| %>
-			<li><%= error %></li>
-		<% end %>
-		</ul>
-	<% end %>
+<%= render 'errors' %>
 </div>
 <div class="well bs-component register-page-form">
 	<%= form_for @user, url: users_path, method: "post", class: "form-horizontal" do |f| %>
