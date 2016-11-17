@@ -13,11 +13,11 @@
 
     <ul class="nav nav-tabs">
       <% if logged_in? %>
-        <li><%= link_to current_user.user_name %></li> <!-- , _url -->
-        <li><%= link_to 'Logout' %></li> <!-- , sessions_url, method: :delete -->
+        <li><%= link_to current_user.user_name %></li> 
+        <li><%= link_to 'Logout', sessions_url, method: :delete %></li>
       <% else %>
-        <li><%= link_to 'New User' %></li> <!-- , new_user_url -->
-        <li><%= link_to 'Login', new_session_path %></li> <!-- , sessions_new_url -->
+        <li><%= link_to 'New User', new_user_url %></li>
+        <li><%= link_to 'Login', new_session_path %></li> 
       <% end %>
     </ul>
 
