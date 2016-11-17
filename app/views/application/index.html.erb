@@ -1,3 +1,5 @@
 <ul class="nav nav-tabs">
-  <li><%= link_to 'Create Reminder' %></li> <!-- , reminders_url -->
+	<% if logged_in? %>
+  	<li><%= link_to 'Create Reminder', new_user_reminder_url(@user) %></li>
+  <% end %>
 </ul>

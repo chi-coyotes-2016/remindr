@@ -27,5 +27,7 @@ feature "creating a reminder" do
 	xscenario "create reminder form contains ..." do
 		click_link "Create Reminder"
 	end
+
+	
 	
 end
