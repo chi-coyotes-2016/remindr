@@ -5,10 +5,6 @@ require 'rails_helper'
 		scenario "the user sees a registration form" do 
 			visit "/users/new"
 			expect(page).to have_field("user[first_name]") 
-			# response.should have_field("first_name")
-		end
-
-		xscenario "" do 
 		end
 
 	end 
