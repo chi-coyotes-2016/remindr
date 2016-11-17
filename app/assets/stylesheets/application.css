@@ -47,6 +47,14 @@
  template {
      display: none
  }
+ .register-page-form, .register-page-header {
+     width: 40%;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ .register-page-header {
+     margin-bottom: 21px;
+ }
  a {
      background-color: transparent
  }

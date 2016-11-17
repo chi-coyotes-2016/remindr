@@ -1,4 +1,41 @@
-<% form_for :reminder, url: user_reminders, class: 'form-horizontal' do |f| %>
-<%= f.collection_select :group_id, Group.where(user: @user).order(:name), :id, :name %>
-<%= f.collection_select :contact_id, Contact.where(user: @user).order(:last_name), :id, :full_name %>
-<% end %>
+<h1 class="register-page-header">Register a new user</h1>
+<div>
+	<% if @errors  %>
+		<ul>
+		<% @errors.each do |error| %>
+			<li><%= error %></li>
+		<% end %>
+		</ul>
+	<% end %>
+</div>
+<div class="well bs-component register-page-form">
+	<%= form_for @user, url: users_path, method: "post", class: "form-horizontal" do |f| %>
+		<div>
+			<%= f.label(:user_name, "Username")%>
+			<%= f.text_field(:user_name, class: "form-control")%>
+		</div>
+		<div>
+			<%= f.label(:first_name, "First Name")%>
+			<%= f.text_field(:first_name, class: "form-control") %>
+		</div>
+		<div>
+			<%= f.label(:last_name, "Last Name")%>
+			<%= f.text_field(:last_name, class: "form-control") %>
+		</div>
+		<div>
+			<%= f.label(:email, "Email")%>
+			<%= f.text_field(:email, class: "form-control")%>
+		</div>
+		<div>
+			<%= f.label(:password, "Password")%>
+			<%= f.password_field(:password, class: "form-control")%>
+		</div>
+		<div>
+			<%= f.label(:phone_number, "Phone Number")%>
+			<%= f.text_field(:phone_number, class: "form-control")%>
+		</div>
+		<div>
+			<%= f.submit("Register", class: "btn btn-primary")%>
+		</div>
+	<% end %>
+</div>
