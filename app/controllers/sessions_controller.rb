@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-    @user = User.new unless @user
+    if logged_in?
+      @user = User.new
+    else
+      @user = current_user
+    end
   end
 
   def create
