@@ -17,7 +17,7 @@
         <li><%= link_to 'Logout' %></li> <!-- , sessions_url, method: :delete -->
       <% else %>
         <li><%= link_to 'New User' %></li> <!-- , new_user_url -->
-        <li><%= link_to 'Login' %></li> <!-- , sessions_new_url -->
+        <li><%= link_to 'Login', new_session_path %></li> <!-- , sessions_new_url -->
       <% end %>
     </ul>
 
