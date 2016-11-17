@@ -1,10 +1,10 @@
 <h1>Login</h1>
 
-<%= form_tag("/sessions", method: "post") do %>
-	<%= label_tag(:username, "Username") %>
-	<%= text_field_tag(:username) %>
-	<%= label_tag(:password, "Password") %>
-	<%= password_field_tag(:password) %>
-	<%= submit_tag("Login") %>
+<%= form_for :session, url: sessions_path, method: "post" do |f| %>
+	<%= f.label(:user_name, "Username") %>
+	<%= f.text_field(:user_name) %>
+	<%= f.label(:password, "Password") %>
+	<%= f.password_field(:password) %>
+	<%= f.submit("Login") %>
 
 <% end %> 
