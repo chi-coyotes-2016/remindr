@@ -13,6 +13,7 @@
 
     <ul class="nav nav-tabs">
       <% if logged_in? %>
+        <li><%= link_to current_user.first_name %></li> <!-- , _url -->
         <li><%= link_to 'Logout' %></li> <!-- , sessions_url, method: :delete -->
       <% else %>
         <li><%= link_to 'New User' %></li> <!-- , new_user_url -->
