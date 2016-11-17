@@ -1,0 +1,32 @@
+<h1 class="register-page-header">Register a new user</h1>
+<div class="well bs-component register-page-form">
+	<%= form_for @user, url: new_user_url, method: "post", class: "form-horizontal" do |f| %>
+		<div>
+			<%= f.label(:user_name, "Username")%>
+			<%= f.text_field(:user_name, class: "form-control")%>
+		</div>
+		<div>
+			<%= f.label(:first_name, "First Name")%>
+			<%= f.text_field(:first_name, class: "form-control") %>
+		</div>
+		<div>
+			<%= f.label(:last_name, "Last Name")%>
+			<%= f.text_field(:last_name, class: "form-control") %>
+		</div>
+		<div>
+			<%= f.label(:email, "Email")%>
+			<%= f.text_field(:email, class: "form-control")%>
+		</div>
+		<div>
+			<%= f.label(:password, "Password")%>
+			<%= f.password_field(:password, class: "form-control")%>
+		</div>
+		<div>
+			<%= f.label(:phone_number, "Phone Number")%>
+			<%= f.text_field(:phone_number, class: "form-control")%>
+		</div>
+		<div>
+			<%= f.submit("Register", class: "btn btn-primary")%>
+		</div>
+	<% end %>
+</div>
