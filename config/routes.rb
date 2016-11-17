@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   root 'application#index'
   
+  resources :sessions, only: [:new, :create, :delete]
   
 end
