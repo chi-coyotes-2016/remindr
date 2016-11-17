@@ -56,7 +56,10 @@
      margin-bottom: 21px;
  }
 /* body {
-     background-image: url('https://static.pexels.com/photos/1778/numbers-time-watch-white.jpg');
+  background-image: url('https://static.pexels.com/photos/1778/numbers-time-watch-white.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
  }*/
  a {
      background-color: transparent
