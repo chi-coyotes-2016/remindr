@@ -31,7 +31,7 @@ Things you may want to cover:
 
 # Contributors
 
-* @hopkins571
-* @busster
-* @jsumulong
+* [@hopkins571](https://github.com/hopkins571)
+* [@busster](https://github.com/busster)
+* [@jsumulong](https://github.com/JSumulong)
 
