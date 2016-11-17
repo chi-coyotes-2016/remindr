@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   delete '/sessions' => 'sessions#destroy'
   
   resources :users do
+    resources :contacts
+    resources :groups do
+      resources :contacts, only: [:index, :show]
+    end
     resources :reminders
   end
 
