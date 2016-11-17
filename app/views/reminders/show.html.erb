@@ -1,0 +1,11 @@
+<div>
+  <h1>Hello <%= @user.user_name %></h1>
+  <h2>Your Upcoming Reminders:</h2>
+
+  <ul>
+   <% @reminders.each do |reminder| %>
+      <%= render partial: "reminder", locals: { reminder: reminder } %>
+    <% end %>
+  </ul>
+  
+</div>
