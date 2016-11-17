@@ -3,9 +3,12 @@ Rails.application.routes.draw do
 
   root 'application#index'
   
-  resources :sessions, only: [:new, :create, :delete]
+  get '/sessions/new' => 'sessions#new'
+  post '/sessions' => 'sessions#create'
+  delete '/sessions' => 'sessions#destroy'
+  
   resources :users do
     resources :reminders
   end
-  
+
 end
