@@ -1,4 +1,4 @@
-# Remindr
+# Remindr [![Build Status](https://travis-ci.org/chi-coyotes-2016/remindr.svg?branch=master)](https://travis-ci.org/chi-coyotes-2016/remindr)
 
 # Purpose:
 This is a web app that allows users to store a list of contacts and schedule reminders to be sent to a contact or a group of contacts on one's contact list via text messages. The reminders may be recurring and users can specify the number of times and frequency at which the reminder can be sent.
