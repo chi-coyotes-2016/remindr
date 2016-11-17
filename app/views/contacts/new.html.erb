@@ -1,12 +1,6 @@
 <h1 class="register-page-header">Create a new contact</h1>
 
-<% if @errors %>
-	<ul>
-	<% @errors.each do |error| %>
-		<li><%= error %></li>
-	<% end %>
-	</ul>
-<% end %>
+<%= render 'errors' %>
 
 <div class="well bs-component register-page-form">
 	<%= form_for @contact, url: user_contacts_path(@user), method: "post", class: "form-horizontal" do |f| %>
