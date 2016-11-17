@@ -1,10 +1,13 @@
 <li>
 
   <!-- contacts partial -->
-  
+
   <p><%= reminder.body %></p>
   <p><%= reminder.time_to_go_out %></p>
   <p><%= reminder.number_of_recurrences %></p>
   <p><%= reminder.time_of_recurrence %></p>
+
+  <%= link_to 'Edit', edit_user_reminder_url %>
+  <%= link_to 'Delete', user_reminder(reminder), method: :delete, data: {confirm: "Are you sure you want to delete?"} %>
 
 </li>
