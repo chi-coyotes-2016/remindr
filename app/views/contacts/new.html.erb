@@ -1,0 +1,19 @@
+<h1 class="register-page-header">Create a new contact</h1>
+
+<%= render 'errors' %>
+
+<div class="well bs-component register-page-form">
+	<%= form_for @contact, url: user_contacts_path(@user), method: "post", class: "form-horizontal" do |f| %>
+	<div>
+		<%= f.label(:name, "Name") %>
+		<%= f.text_field(:name, class: "form-control") %>
+	</div>
+	<div>
+		<%= f.label(:phone_number, "Phone number") %>
+		<%= f.text_field(:phone_number, class: "form-control") %>
+	</div>
+	<div>
+		<%= f.submit("Create", class: "btn btn-primary") %>
+	</div>
+	<% end %>
+</div>

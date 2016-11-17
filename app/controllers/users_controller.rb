@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-    p "t" * 200
       session[:user_id] = @user.id
       redirect_to :root
     else
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit :user_name, :first_name, :last_name, :email, :password, :phone_number
+    params.require(:user).permit :user_name, :first_name, :last_name, :email, :password
   end
 
 end
