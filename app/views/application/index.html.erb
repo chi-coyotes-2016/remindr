@@ -1,5 +1,4 @@
 <% if logged_in? %>
-<ul class="nav nav-tabs">
-  <li><%= link_to 'Create Reminder', new_user_reminder_path(@user) %></li> 
-</ul>
+<%= link_to 'Create Reminder', new_user_reminder_path(@user) %>
 <% end %>
+
