@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rake'
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
 end
 
 group :development do
