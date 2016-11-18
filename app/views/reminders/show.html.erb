@@ -7,7 +7,7 @@
 			<div class="panel-body">
 				<h4 class="register-page-header"><%= @reminder.body %></h4>
 				<p class="register-page-header">Recipients: <%= @reminder.contacts.map { |contact| contact.name }.join(", ") %></p>
-				<p class="register-page-header">To be sent at: <%= @reminder.time_to_go_out %></p>
+				<p class="register-page-header">To be sent at: <%= @reminder.human_central_time %></p>
 				<%= link_to "Edit", edit_user_reminder_url(@user, @reminder), class: "btn btn-primary" %>
 				<%= link_to "Delete", user_reminder_url(@user, @reminder), method: :delete, class: "btn btn-primary" %>
 			</div>
