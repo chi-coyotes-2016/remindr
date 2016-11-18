@@ -1,0 +1,12 @@
+<h1 class="register-page-header">Edit Group Info:</h1>
+<div class="well bs-component register-page-form">
+  <%= form_for @group, url: user_group_path(@user, @group), method: "patch", class: "form-horizontal" do |f| %>
+  <div>
+    <%= f.label(:name, "Name") %>
+    <%= f.text_field(:name, class: "form-control") %>
+  </div>
+  <div>
+    <%= f.submit("Update", class: "btn btn-primary") %>
+  </div>
+  <% end %>
+</div>
