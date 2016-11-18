@@ -1,3 +1,5 @@
+<div class="well bs-component register-page-form">
+
 <h1>
 <%= @group.name %>
 </h1>
@@ -8,5 +10,8 @@
   <% end %>
 </ul>
 
+  <%= link_to "Edit", edit_user_group_url(@user, @group), class: "btn btn-primary" %>
+  <%= link_to "Delete", user_group_url(@user, @group), method: :delete, class: "btn btn-primary" %>
 
+</div>
 <!-- select multiple for contacts -->
