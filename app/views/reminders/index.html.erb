@@ -8,6 +8,7 @@
       <ul class="list-group">
        <% @reminders.each do |reminder| %>
           <%= render partial: "reminder", locals: { reminder: reminder } %>
+          <br>
         <% end %>
       </ul>
     </div>
