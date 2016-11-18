@@ -41,8 +41,15 @@ class GroupsController < ApplicationController
   end
 
   def update
+    contact_ids = params[:group][:contact_ids]
+    contact_ids.reject!{ |c| c.empty? }
     @group = Group.find(params[:id])
     @group.update_attributes(group_params)
+
+    if !contact_ids.empty?
+      @group.contacts = []
+      contact_ids.each {|id| @group.contacts << Contact.find_by(id: id)}
+    end
     redirect_to user_group_url(params[:user_id], @group)
   end
 
