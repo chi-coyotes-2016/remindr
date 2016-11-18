@@ -1,6 +1,7 @@
-<h2 class="register-page-header"><%= @user.first_name %>'s contact:</h2>
-<h3 class="register-page-header"><%= @contact.name + "  " + @contact.phone_number %></h3>
 
-<%= link_to "Edit", edit_user_contact_url(@user, @contact) %>
-<%= link_to "Delete", user_contact_url(@user, @contact), method: :delete %>
-<!-- edit and delete -->
+<div class="well bs-component register-page-form">
+	<h2 class="register-page-header"><%= @user.first_name %>'s contact:</h2>
+	<h3 class="register-page-header"><%= @contact.name + "  " + @contact.phone_number %></h3>
+	<%= link_to "Edit", edit_user_contact_url(@user, @contact), class: "btn btn-primary" %>
+	<%= link_to "Delete", user_contact_url(@user, @contact), method: :delete, class: "btn btn-primary" %>
+</div>

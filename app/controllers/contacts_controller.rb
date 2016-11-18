@@ -33,6 +33,23 @@ class ContactsController < ApplicationController
 		@contact = Contact.find(params[:id])
 	end
 
+	def edit
+		@user = User.find(params[:user_id])
+		@contact = Contact.find(params[:id])
+	end
+
+	def update
+		@contact = Contact.find(params[:id])
+		@contact.update_attributes(contact_params)
+		redirect_to user_contact_url(params[:user_id], @contact)
+	end
+
+	def destroy
+		@contact = Contact.find(params[:id])
+		@contact.destroy
+		redirect_to user_contacts_url(params[:user_id])
+	end
+
 private
 	def contact_params
 		params.require(:contact).permit(:name, :phone_number)
