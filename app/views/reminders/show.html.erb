@@ -1,0 +1,6 @@
+<div class="well bs-component register-page-form">
+	<h2 class="register-page-header"><%= @user.first_name %>'s reminder:</h2>
+	<h3 class="register-page-header"><%= @reminder.body %></h3>
+	<%= link_to "Edit", edit_user_reminder_url(@user, @reminder), class: "btn btn-primary" %>
+	<%= link_to "Delete", user_reminder_url(@user, @reminder), method: :delete, class: "btn btn-primary" %>
+</div>
