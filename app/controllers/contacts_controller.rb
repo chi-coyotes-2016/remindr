@@ -40,8 +40,13 @@ class ContactsController < ApplicationController
 
 	def update
 		@contact = Contact.find(params[:id])
-		@contact.update_attributes(contact_params)
-		redirect_to user_contact_url(params[:user_id], @contact)
+		@user = User.find_by(id: params[:user_id])
+		if @contact.update_attributes(contact_params)
+			redirect_to user_contact_url(params[:user_id], @contact)
+		else
+			@errors = @contact.errors.full_messages
+			render 'edit'
+		end
 	end
 
 	def destroy
