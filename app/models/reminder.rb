@@ -9,6 +9,10 @@ class Reminder < ActiveRecord::Base
     (self.time_to_go_out - 21600).strftime('%Y-%m-%dT%H:%M:%S')
   end
 
+  def human_central_time
+    (self.time_to_go_out - 21600).strftime("%B %-m, %Y %H:%M")
+  end
+
   def send_sms
   	client = Twilio::REST::Client.new ENV["TWILIO_SID"], ENV["TWILIO_AUTH_TOKEN"]
   	reminder = self
