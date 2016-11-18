@@ -28,6 +28,23 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:user_id])
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    @group.update_attributes(group_params)
+    redirect_to user_group_url(params[:user_id], @group)
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to user_groups_url(params[:user_id])
+  end
+
 
   private
   def group_params
