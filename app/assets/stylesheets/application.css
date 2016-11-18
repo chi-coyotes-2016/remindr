@@ -54,6 +54,8 @@
  }
  .register-page-header {
      margin-bottom: 21px;
+     margin-left: 5%;
+     width: 95%;
  }
 
  .contact-index-footer {
@@ -7167,7 +7169,12 @@
     .wrapper {
        width: 100%;
     }
+    .small-bar > * > * {
+     font-size: 1em;
+    }
+
 }
+
 
 .nav-bar {
 
@@ -7193,3 +7200,4 @@
   background-attachment: fixed;
   background-size: cover;
  }
+
