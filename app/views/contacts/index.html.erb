@@ -1,5 +1,26 @@
 <div class="jumbotron center-me">
-    <%= link_to 'Create Contact', new_user_contact_path(@user), class: "btn btn-primary" %>
 
-    <%= link_to 'Create Group', new_user_group_path(@user), class: "btn btn-primary" %>
+
+<div class="two-col">
+  <h2>Contacts:</h2>
+  <ul class="list-group">
+  <% @user.contacts.each do |contact| %>
+    <li class="list-group-item"><%= link_to contact.name, user_contact_path(@user, contact) %> - <%= contact.phone_number %></li>
+  <% end %>
+  </ul>
+</div>
+
+<div class="two-col">
+  <h2>Groups:</h2>
+  <ul class="list-group">
+  <% @user.groups.each do |group| %>
+    <li class="list-group-item"><%= link_to group.name, user_group_path(@user, group) %></li>
+  <% end %>
+  </ul>
+</div>
+
+
+  <%= link_to 'Create Contact', new_user_contact_path(@user), class: "btn btn-primary" %>
+
+  <%= link_to 'Create Group', new_user_group_path(@user), class: "btn btn-primary" %>
 </div>

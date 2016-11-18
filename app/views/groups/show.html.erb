@@ -2,5 +2,11 @@
 <%= @group.name %>
 </h1>
 
+<ul class="list-group">
+  <% @group.contacts.each do |contact| %>
+    <li class="list-group-item"><%= link_to contact.name, user_contact_path(@user, contact) %> - <%= contact.phone_number %></li>
+  <% end %>
+</ul>
 
-<!-- add contacts iterator -->
+
+<!-- select multiple for contacts -->
