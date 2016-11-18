@@ -1,7 +1,17 @@
-
-<div class="well bs-component register-page-form">
-	<h2 class="register-page-header"><%= @user.first_name %>'s contact:</h2>
-	<h4 class="register-page-header"><%= @contact.name + "  " + @contact.phone_number %></h4>
-	<%= link_to "Edit", edit_user_contact_url(@user, @contact), class: "btn btn-primary" %>
-	<%= link_to "Delete", user_contact_url(@user, @contact), method: :delete, class: "btn btn-primary" %>
+<div class="container">
+	<div class="wrapper">
+		<div class="panel panel-info two-col">
+  		<div class="panel-heading">
+				<h2 class="panel-title big-font identifiers"><%= @user.first_name %>'s contact:</h2>
+			</div>
+			<div class="panel-body">
+				<h4 class="register-page-header"><%= @contact.name + "  " + @contact.phone_number %></h4>
+				<%= link_to "Edit", edit_user_contact_url(@user, @contact), class: "btn btn-primary" %>
+				<%= link_to "Delete", user_contact_url(@user, @contact), method: :delete, class: "btn btn-primary" %>
+			</div>
+		</div>
+	</div>
 </div>
+
+
+

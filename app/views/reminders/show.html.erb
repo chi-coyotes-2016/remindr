@@ -1,15 +1,20 @@
-<div class="well bs-component register-page-form">
-	<h2 class="register-page-header"><%= @user.first_name %>'s reminder:</h2>
-	<h4 class="register-page-header"><%= @reminder.body %></h4>
+<div class="container">
+	<div class="wrapper">
+		<div class="panel panel-info two-col">
+  		<div class="panel-heading">
+				<h2 class="register-page-header"><%= @user.first_name %>'s reminder:</h2>
+			</div>
+			<div class="panel-body">
+				<h4 class="register-page-header"><%= @reminder.body %></h4>
+				<p class="register-page-header">Recipients: <%= @reminder.contacts.map { |contact| contact.name }.join(", ") %></p>
+				<p class="register-page-header">To be sent at: <%= @reminder.time_to_go_out %></p>
+				<%= link_to "Edit", edit_user_reminder_url(@user, @reminder), class: "btn btn-primary" %>
+				<%= link_to "Delete", user_reminder_url(@user, @reminder), method: :delete, class: "btn btn-primary" %>
+			</div>
+		<div>
 	<div>
-		<p class="register-page-header">Recipients:</p>
-		<% @reminder.contacts.each do |contact| %>
-			<p class="register-page-header"><%= contact.name %></p>
-		<% end %>
-	</div>
-	<div>
-		<p class="register-page-header">To be sent at: <%= @reminder.time_to_go_out %></p>
-	</div>
-	<%= link_to "Edit", edit_user_reminder_url(@user, @reminder), class: "btn btn-primary" %>
-	<%= link_to "Delete", user_reminder_url(@user, @reminder), method: :delete, class: "btn btn-primary" %>
-</div>
+<div>
+
+
+
+
