@@ -10,11 +10,9 @@ class RemindersController < ApplicationController
 
   def show 
     if logged_in?
-      p "t" * 200
       @user = User.find(params[:user_id])
       @reminder = Reminder.find_by(id: params[:id])
       if @reminder == nil 
-        p "p" * 200
         redirect_to new_user_reminder_url(@user)
       end
     end
