@@ -7167,7 +7167,12 @@
     .wrapper {
        width: 100%;
     }
+    .small-bar > * > * {
+     font-size: 1em;
+    }
+
 }
+
 
 .nav-bar {
 
@@ -7193,3 +7198,4 @@
   background-attachment: fixed;
   background-size: cover;
  }
+
