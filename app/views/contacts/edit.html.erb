@@ -1,3 +1,11 @@
+<% if @errors %>
+	<ul>
+		<% @errors.each do |error| %>
+			<li><%= error %></li>
+		<% end %>
+	</ul>
+<% end %>
+
 <h1 class="register-page-header">Edit Contact Info:</h1>
 <div class="well bs-component register-page-form">
 	<%= form_for @contact, url: user_contact_path(@user, @contact), method: "patch", class: "form-horizontal" do |f| %>
