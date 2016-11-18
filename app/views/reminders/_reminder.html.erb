@@ -1,14 +1,15 @@
-<li class="list-group-item">
-
-  <% reminder.contacts.each do |contact| %>
-    <%= link_to contact.name, user_contact_path(@user, contact) %> - <%= contact.phone_number %>
-  <% end %>
-
-  <p><%= reminder.body %></p>
-  <p><%= reminder.time_to_go_out %></p>
-  <p><%= reminder.number_of_recurrences %></p>
-  <p><%= reminder.time_of_recurrence %></p>
-
+<li class="list-group-item"><div class="h3 list-header list-header-main">Reminder:</div>
+  <ul class="list-group">Contacts:
+    <% reminder.contacts.each do |contact| %>
+      <li class="list-group-item space-top"><%= link_to contact.name, user_contact_path(@user, contact) %> - <%= contact.phone_number %></li>
+    <% end %>
+  </ul>
+  <ul class="list-group">Content:
+    <li class="list-group-item"><p class="list-header ">Text:</p><p class="list-group"><%= reminder.body %></p></li>
+    <li class="list-group-item"><p class="list-header ">Text Time:</p><p class="list-group"><%= reminder.time_to_go_out %></p></li>
+    <li class="list-group-item"><p class="list-header ">Text of Recurrence:</p><p class="list-group"><%= reminder.number_of_recurrences %></p></li>
+    <li class="list-group-item"><p class="list-header ">Time of Recurrence:</p><p class="list-group"><%= reminder.time_of_recurrence %></p></li>
+  </ul>
   <%= link_to 'Edit', edit_user_reminder_path(current_user, reminder) %>
   <%= link_to 'Delete', user_reminder_path(current_user, reminder), method: :delete, data: {confirm: "Are you sure you want to delete?"} %>
 
