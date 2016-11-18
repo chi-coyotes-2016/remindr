@@ -1,12 +1,13 @@
-<div class="center-me">
-<% if logged_in? %>
+<div class="main-container">
+  <div class="center-me">
+  <% if logged_in? %>
 
-  <%= link_to 'Create Reminder', new_user_reminder_path(@user), class: "btn btn-primary" %>
+    <%= link_to 'Create Reminder', new_user_reminder_path(@user), class: "btn btn-primary big" %>
 
-<% else %>
-  
-  <%= link_to 'Login', new_session_url, class: "btn btn-primary" %>
+  <% else %>
+    
+    <%= link_to 'Create Reminder', new_session_url, class: "btn btn-primary big" %>
 
-<% end %>
+  <% end %>
+  </div>
 </div>
-

@@ -1,15 +1,22 @@
-<h1 class="register-page-header">Register a new user</h1>
-<div>
+
 <%= render 'errors' %>
-</div>
-<div class="well bs-component register-page-form">
-  <%= form_for :group, url: user_groups_path(@user), method: "post", class: "form-horizontal" do |f| %>
-    <div>
-      <%= f.label(:name, "Name")%>
-      <%= f.text_field(:name, class: "form-control")%>
+
+<div class="small-me">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h1 class="panel-title">Register a new user</h1>
     </div>
-    <div>
-      <%= f.submit("Register", class: "btn btn-primary")%>
+    <div class="panel-body">
+      <%= form_for :group, url: user_groups_path(@user), method: "post", class: "form-horizontal" do |f| %>
+        <div>
+          <%= f.label(:name, "Name")%>
+          <%= f.text_field(:name, class: "form-control")%>
+        </div>
+        <div>
+          <%= f.submit("Create", class: "btn btn-primary space-me")%>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
+

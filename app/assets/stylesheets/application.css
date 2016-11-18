@@ -55,12 +55,7 @@
  .register-page-header {
      margin-bottom: 21px;
  }
-/* body {
-  background-image: url('https://static.pexels.com/photos/1778/numbers-time-watch-white.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
- }*/
+
  .contact-index-footer {
      margin-left: auto;
      margin-right: auto;
@@ -7131,17 +7126,67 @@
      color: #2c3e50
  }
 
+ html,body { 
+     height:100%; 
+     overflow: hidden;
+ }
+
  .center-me {
-     /*margin: 0 auto;*/
+     margin: 0 auto;
      text-align: center;
  }
+ .small-me {
+     max-width: 540px;
+     margin: 0 auto;
+     margin-top: 15px;
+ }
+ .space-me {
+     margin-top: 10px;
+ }
+ .big-font {
+     font-size: 2em;
+     padding-bottom: 10px;
+ }
  .two-col {
-     width: 50%;
+     width: 100%;
+ }
+ .container {
+     margin: 0 auto;
+     width: 90%;
+ }
+ .wrapper {
      float: left;
+     width: 50%;
+     padding: 10px;
  }
  
- @media only screen and (max-width: 640px) {
-    .two-col {
+ @media only screen and (max-width: 660px) {
+    .wrapper {
        width: 100%;
     }
 }
+
+.nav-bar {
+
+}
+
+.identifiers {
+     margin-left: 12px;
+}
+
+.big {
+     padding: 25px;
+     padding-left: 50px;
+     padding-right: 50px;
+}
+
+.main-container {
+     display: flex;
+     align-items: center;
+  height: 100%;
+  overflow: hidden;
+  background-image: url('https://static.pexels.com/photos/1778/numbers-time-watch-white.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+ }
