@@ -1,19 +1,41 @@
-<h1 class="register-page-header">Create a Reminder</h1>
-<div class="well bs-component register-page-form">
-<%= form_for :reminder, url: user_reminders_url(@user), class: 'form-horizontal' do |f| %>
-<div><%= f.label(:group_id, "Group") %>
-<%= f.collection_select :group_id, Group.where(user: @user).order(:name), :id, :name, include_blank: true, class: "form-control", id: "select" %></div>
-<div><%= f.label(:contact_id, "Contacts") %>
-<%= f.collection_select :contact_id, Contact.where(user: @user).order(:name), :id, :name, {}, multiple: true, size: 3, class: "form-control" %></div>
-<div><%= f.label(:body, "Reminder message") %></div>
-<div><%= f.text_area :body, size: "30x5", id: "textArea", class: "form-control" %></div>
-<div><%= f.label(:time_to_go_out, "Reminder time") %>
-<%= f.datetime_field :time_to_go_out %></div>
-<div><%= f.label(:number_of_recurrences, "Number of recurrences") %>
-<%= f.text_field :number_of_recurrences, value: "0", class: "form-control" %></div>
-<div><%= f.label(:time_of_recurrence, "How often?")%><%= f.select(:time_of_recurrence, ['every ten minutes','hourly', 'every 6 hours', 'every 12 hours', 'daily', 'weekly', 'monthly'], id: "select", include_blank: true) %></div>
+<%= render 'errors' %>
 
-<%= f.submit class: "btn btn-primary" %>
+<div class="small-me">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h1 class="panel-title">Create a Reminder</h1>
+    </div>
+    <div class="panel-body">
 
-<% end %>
+      <%= form_for :reminder, url: user_reminders_url(@user), class: 'form-horizontal' do |f| %>
+        <div>
+          <%= f.label(:group_id, "Group") %>
+          <%= f.collection_select :group_id, Group.where(user: @user).order(:name), :id, :name, include_blank: true, class: "form-control", id: "select" %>
+        </div>
+        <div>
+          <%= f.label(:contact_id, "Contacts") %>
+          <%= f.collection_select :contact_id, Contact.where(user: @user).order(:name), :id, :name, {}, multiple: true, size: 3, class: "form-control" %>
+        </div>
+        <div>
+          <%= f.label(:body, "Reminder message") %>
+        </div>
+        <div>
+          <%= f.text_area :body, size: "30x5", id: "textArea", class: "form-control" %>
+        </div>
+        <div>
+          <%= f.label(:time_to_go_out, "Reminder time") %>
+          <%= f.datetime_field :time_to_go_out %>
+        </div>
+        <div>
+          <%= f.label(:number_of_recurrences, "Number of recurrences") %>
+          <%= f.text_field :number_of_recurrences, value: "0", class: "form-control" %>
+        </div>
+        <div>
+          <%= f.label(:time_of_recurrence, "How often?")%><%= f.select(:time_of_recurrence, ['every ten minutes','hourly', 'every 6 hours', 'every 12 hours', 'daily', 'weekly', 'monthly'], id: "select", include_blank: true) %>
+        </div>
+
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,48 @@
+
+
+<div class="small-me">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h1 class="panel-title">Edit a Reminder</h1>
+    </div>
+    <div class="panel-body">
+      
+      <%= form_for :reminder, url: user_reminder_url(@user, @reminder), method: "patch", class: 'form-horizontal' do |f| %>
+      <div>
+        <%= f.label(:group_id, "Group") %>
+        <br>
+        <%= f.collection_select :group_id, Group.where(user: @user).order(:name), :id, :name, include_blank: true %>
+      </div>
+
+      <div>
+        <%= f.label(:contact_id, "Contacts") %>
+        <%= f.collection_select :contact_id, Contact.where(user: @user).order(:name), :id, :name, {}, multiple: true, size: 6, class: "form-control" %>
+      </div>
+
+      <div>
+        <%= f.label(:body, "Reminder message") %>
+      </div>
+
+      <div>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+
+      <div>
+        <%= f.label(:time_to_go_out, "Reminder time") %>
+        <%= f.datetime_field :time_to_go_out, class: "form-control" %>
+      </div>
+
+      <div>
+        <%= f.label(:number_of_recurrences, "Number of recurrences") %>
+        <%= f.text_field :number_of_recurrences, value: "0", class: "form-control" %>
+      </div>
+      <%= f.submit("Edit", class: "btn btn-primary space-me") %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
+
+
