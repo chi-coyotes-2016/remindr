@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20161116210925) do
   create_table "reminders", force: :cascade do |t|
     t.text     "body"
     t.integer  "author_id"
-    t.date     "time_to_go_out"
+    t.datetime "time_to_go_out"
     t.integer  "number_of_recurrences"
     t.string   "time_of_recurrence"
     t.datetime "created_at",            null: false

@@ -22,8 +22,10 @@ class RemindersController < ApplicationController
   		if @user == current_user
         @reminder = Reminder.new(reminder_params)
         @reminder.author = current_user
+        p params[:reminder][:time_to_go_out]
+        params[:reminder][:time_to_go_out] = Time.new(params[:reminder][:time_to_go_out]) + 600
+        p params[:reminder][:time_to_go_out]
         params[:reminder][:contact_id].reject!{ |c| c.empty? }
-        # p params[:reminder][:group_id].any?
         if params[:reminder][:group_id].length != 0
           @reminder.contacts << Group.find_by(id: params[:reminder][:group_id]).contacts
         elsif params[:reminder][:contact_id].any?
@@ -32,8 +34,9 @@ class RemindersController < ApplicationController
           render :new
         end
         if @reminder.save
-          redirect_to @reminder
+          redirect_to user_reminder_url(@user, @reminder)
         else
+          @errors = @reminder.errors.full_messages
           render :new
         end
   		else
@@ -45,10 +48,13 @@ class RemindersController < ApplicationController
 
   end
 
+  def edit
+  end
+
   
   private
   def reminder_params
-  	params.require(:reminder).permit(:body, :time_to_go_out, :number_of_recurrences)
+  	params.require(:reminder).permit(:body, :time_to_go_out, :number_of_recurrences, :time_of_recurrence)
   end
 
 end
