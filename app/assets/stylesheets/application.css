@@ -61,6 +61,12 @@
   background-attachment: fixed;
   background-size: cover;
  }*/
+ .contact-index-footer {
+     margin-left: auto;
+     margin-right: auto;
+     width: 35%;
+     clear: both;
+ }
  a {
      background-color: transparent
  }

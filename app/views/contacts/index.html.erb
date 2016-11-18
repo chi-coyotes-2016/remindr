@@ -1,4 +1,4 @@
-<div class="jumbotron center-me">
+<!-- <div class="jumbotron center-me"> -->
 
 <div class="two-col">
   <h2>Contacts:</h2>
@@ -18,14 +18,15 @@
   </ul>
 </div>
 
-
+<div class="contact-index-footer">
   <%= link_to 'Create Contact', new_user_contact_path(@user), class: "btn btn-primary" %>
 
   <%= link_to 'Create Group', new_user_group_path(@user), class: "btn btn-primary" %>
+</div>
 
 
 <!-- head -->
-    <%= link_to 'Create Group', new_user_group_path(@user), class: "btn btn-primary" %>
+<!--     <%= link_to 'Create Group', new_user_group_path(@user), class: "btn btn-primary" %>
 </div>
 <div class="container">
 	<% if @contacts %>
@@ -35,4 +36,4 @@
 			<% end %>
 		</ul>
 	<% end %>
-</div>
+</div> -->
