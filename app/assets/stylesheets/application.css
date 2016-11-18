@@ -7129,4 +7129,13 @@
      /*margin: 0 auto;*/
      text-align: center;
  }
+ .two-col {
+     width: 50%;
+     float: left;
+ }
  
+ @media only screen and (max-width: 640px) {
+    .two-col {
+       width: 100%;
+    }
+}
