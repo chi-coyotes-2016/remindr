@@ -1,9 +1,6 @@
-<h1 class="register-page-header alert alert-dismissible alert-info">Create a new contact</h1>
-
-<%= render 'errors' %>
-
+<h1 class="register-page-header">Edit Contact Info:</h1>
 <div class="well bs-component register-page-form">
-	<%= form_for @contact, url: user_contacts_path(@user), method: "post", class: "form-horizontal" do |f| %>
+	<%= form_for @contact, url: user_contact_path(@user, @contact), method: "patch", class: "form-horizontal" do |f| %>
 	<div>
 		<%= f.label(:name, "Name") %>
 		<%= f.text_field(:name, class: "form-control") %>
@@ -13,7 +10,7 @@
 		<%= f.text_field(:phone_number, class: "form-control") %>
 	</div>
 	<div>
-		<%= f.submit("Create", class: "btn btn-primary") %>
+		<%= f.submit("Update", class: "btn btn-primary") %>
 	</div>
 	<% end %>
 </div>
