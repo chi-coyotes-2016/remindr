@@ -3,7 +3,11 @@ class ContactsController < ApplicationController
 	def index
 	  @user = User.find_by(id: current_user.id)
 	  if logged_in?
-	  	@user = current_user
+	    if params[:user_id].to_i == session[:user_id]
+	    	@contacts = @user.contacts
+	    else
+	    	redirect_to "/"
+	    end
 	  end
 	end
 
@@ -22,6 +26,28 @@ class ContactsController < ApplicationController
 			@errors = @contact.errors.full_messages
 			render 'new'
 		end
+	end
+
+	def show
+		@user = User.find(params[:user_id])
+		@contact = Contact.find(params[:id])
+	end
+
+	def edit
+		@user = User.find(params[:user_id])
+		@contact = Contact.find(params[:id])
+	end
+
+	def update
+		@contact = Contact.find(params[:id])
+		@contact.update_attributes(contact_params)
+		redirect_to user_contact_url(params[:user_id], @contact)
+	end
+
+	def destroy
+		@contact = Contact.find(params[:id])
+		@contact.destroy
+		redirect_to user_contacts_url(params[:user_id])
 	end
 
 private
