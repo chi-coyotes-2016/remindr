@@ -22,17 +22,31 @@ class RemindersController < ApplicationController
   		if @user == current_user
         @reminder = Reminder.new(reminder_params)
         @reminder.author = current_user
-        p params[:reminder][:time_to_go_out]
-        params[:reminder][:time_to_go_out] = Time.new(params[:reminder][:time_to_go_out]) + 600
-        p params[:reminder][:time_to_go_out]
-        params[:reminder][:contact_id].reject!{ |c| c.empty? }
-        if params[:reminder][:group_id].length != 0
-          @reminder.contacts << Group.find_by(id: params[:reminder][:group_id]).contacts
-        elsif params[:reminder][:contact_id].any?
-          @reminder.contacts << params[:reminder][:contact_id].map {|c| Contact.find_by(id: c)}
+
+        time = params[:reminder][:time_to_go_out]
+        contact_id = params[:reminder][:contact_id]
+        group_id = params[:reminder][:group_id]
+
+        @group = Group.find_by(id: group_id)
+        contact_id.reject!{ |c| c.empty? }
+        if !group_id.empty?
+          @group.contacts.each {|contact| @reminder.contacts << contact}
         else
-          render :new
+          contact_id.each {|id| @reminder.contacts << Contact.find_by(id: id)}
         end
+        @reminder.time_to_go_out = Time.new(time) + 600
+
+        # p params[:reminder][:time_to_go_out]
+        # params[:reminder][:time_to_go_out] = Time.new(params[:reminder][:time_to_go_out]) + 600
+        # p params[:reminder][:time_to_go_out]
+        # params[:reminder][:contact_id].reject!{ |c| c.empty? }
+        # if params[:reminder][:group_id].length != 0
+        #   @reminder.contacts << Group.find_by(id: params[:reminder][:group_id]).contacts
+        # elsif params[:reminder][:contact_id].any?
+        #   @reminder.contacts << params[:reminder][:contact_id].map {|c| Contact.find_by(id: c)}
+        # else
+        #   render :new
+        # end
         if @reminder.save
           redirect_to user_reminder_url(@user, @reminder)
         else
@@ -51,11 +65,19 @@ class RemindersController < ApplicationController
   def edit
     @user = User.find(params[:user_id])
     @reminder = Reminder.find(params[:id])
+    @contacts = @reminder.contacts
   end
 
   def update
+    contact_ids = params[:reminder][:contact_ids]
+    contact_ids.reject!{ |c| c.empty? }
     @reminder = Reminder.find(params[:id])
     @reminder.update_attributes(reminder_params)
+    if !contact_ids.empty?
+      @reminder.contacts = []
+      contact_ids.each {|id| @reminder.contacts << Contact.find_by(id: id)}
+    end
+
     redirect_to user_reminder_url(params[:user_id], @reminder)
   end
 

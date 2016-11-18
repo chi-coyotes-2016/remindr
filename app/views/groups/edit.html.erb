@@ -6,6 +6,10 @@
     <%= f.text_field(:name, class: "form-control") %>
   </div>
   <div>
+    <%= f.label(:contact_id, "Contacts") %>
+    <%= f.collection_select :contact_id, Contact.where(user: @user).order(:name), :id, :name, multiple: true, size: 3, class: "form-control" %>
+  </div>
+  <div>
     <%= f.submit("Update", class: "btn btn-primary") %>
   </div>
   <% end %>
