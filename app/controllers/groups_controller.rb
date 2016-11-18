@@ -20,6 +20,13 @@ class GroupsController < ApplicationController
     if current_user
       @group = Group.new(group_params)
       current_user.groups << @group
+
+      contact_ids = params[:group][:contact_id]
+      contact_ids.reject!{ |c| c.empty? }
+      if contact_ids.length != 0
+        contact_ids.each {|contact_id| @group.contacts << Contact.find_by(id: contact_id)} 
+      end
+
       if @group.save
         redirect_to user_group_path(@group.user, @group)
       else
@@ -48,7 +55,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :contacts)
   end
 
 end
