@@ -31,7 +31,7 @@
           <%= f.text_field :number_of_recurrences, value: "0", class: "form-control" %>
         </div>
         <div>
-          <%= f.label(:time_of_recurrence, "How often?")%><%= f.select(:time_of_recurrence, ['every ten minutes','hourly', 'every 6 hours', 'every 12 hours', 'daily', 'weekly', 'monthly'], id: "select", include_blank: true) %>
+          <%= f.label(:time_of_recurrence, "How often?")%><%= f.select(:time_of_recurrence, ['every ten minutes','hourly', 'every 6 hours', 'every 12 hours', 'daily', 'weekly'], id: "select", include_blank: true) %>
         </div>
 
         <%= f.submit class: "btn btn-primary" %>
