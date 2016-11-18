@@ -1,28 +1,51 @@
 <!-- <div class="jumbotron center-me"> -->
 
-<div class="two-col">
-  <h2>Contacts:</h2>
+
+
+
+
+<div class="container">
+
+<div class="wrapper">
+<div class="panel panel-info two-col">
+  <div class="panel-heading">
+    <h2 class="panel-title big-font identifiers">Contacts:</h2>
+  </div>
+  <div class="panel-body">
   <ul class="list-group">
-  <% @user.contacts.each do |contact| %>
-    <li class="list-group-item"><%= link_to contact.name, user_contact_path(@user, contact) %> - <%= contact.phone_number %></li>
-  <% end %>
-  </ul>
+    <% @user.contacts.each do |contact| %>
+      <li class="list-group-item"><%= link_to contact.name, user_contact_path(@user, contact) %> - <%= contact.phone_number %></li>
+    <% end %>
+    </ul>
+    <%= link_to 'Create Contact', new_user_contact_path(@user), class: "btn btn-primary" %>
+  </div>
+</div>
 </div>
 
-<div class="two-col">
-  <h2>Groups:</h2>
+<div class="wrapper">
+<div class="panel panel-info two-col">
+  <div class="panel-heading">
+    <h2 class="panel-title big-font identifiers">Groups:</h2>
+  </div>
+  <div class="panel-body">
   <ul class="list-group">
-  <% @user.groups.each do |group| %>
-    <li class="list-group-item"><%= link_to group.name, user_group_path(@user, group) %></li>
-  <% end %>
-  </ul>
+    <% @user.groups.each do |group| %>
+      <li class="list-group-item"><%= link_to group.name, user_group_path(@user, group) %></li>
+    <% end %>
+    </ul>
+    <%= link_to 'Create Group', new_user_group_path(@user), class: "btn btn-primary" %>
+  </div>
+</div>
 </div>
 
-<div class="contact-index-footer">
+
+</div>
+
+<!-- <div class="contact-index-footer">
   <%= link_to 'Create Contact', new_user_contact_path(@user), class: "btn btn-primary" %>
 
   <%= link_to 'Create Group', new_user_group_path(@user), class: "btn btn-primary" %>
-</div>
+</div> -->
 
 
 <!-- head -->

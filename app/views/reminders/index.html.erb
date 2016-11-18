@@ -1,11 +1,15 @@
-<div>
-  <h1>Hello <%= @user.user_name %></h1>
-  <h2>Your Upcoming Reminders:</h2>
-
-  <ul>
-   <% @reminders.each do |reminder| %>
-      <%= render partial: "reminder", locals: { reminder: reminder } %>
-    <% end %>
-  </ul>
-  
+<div class="small-me">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+    <h1 class="panel-title big-font">Hello <%= @user.user_name %></h1>
+    <h2 class="panel-title">Your Upcoming Reminders:</h2>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+       <% @reminders.each do |reminder| %>
+          <%= render partial: "reminder", locals: { reminder: reminder } %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
