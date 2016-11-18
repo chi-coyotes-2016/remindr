@@ -8,16 +8,16 @@ class RemindersController < ApplicationController
     end
   end
 
-  def show 
+  def show
     if logged_in?
       @user = User.find(params[:user_id])
       @reminder = Reminder.find_by(id: params[:id])
-      if @reminder == nil 
+      if @reminder == nil
         redirect_to new_user_reminder_url(@user)
       end
     end
   end
-  
+
   def new
   	if logged_in?
   		@user = current_user
@@ -33,7 +33,7 @@ class RemindersController < ApplicationController
         @reminder = Reminder.new(reminder_params)
         @reminder.author = current_user
 
-        time = params[:reminder][:time_to_go_out]
+        # time = params[:reminder][:time_to_go_out]
         contact_id = params[:reminder][:contact_id]
         group_id = params[:reminder][:group_id]
 
@@ -44,19 +44,8 @@ class RemindersController < ApplicationController
         else
           contact_id.each {|id| @reminder.contacts << Contact.find_by(id: id)}
         end
-        @reminder.time_to_go_out = Time.new(time) + 600
+        @reminder.time_to_go_out += 21600
 
-        # p params[:reminder][:time_to_go_out]
-        # params[:reminder][:time_to_go_out] = Time.new(params[:reminder][:time_to_go_out]) + 600
-        # p params[:reminder][:time_to_go_out]
-        # params[:reminder][:contact_id].reject!{ |c| c.empty? }
-        # if params[:reminder][:group_id].length != 0
-        #   @reminder.contacts << Group.find_by(id: params[:reminder][:group_id]).contacts
-        # elsif params[:reminder][:contact_id].any?
-        #   @reminder.contacts << params[:reminder][:contact_id].map {|c| Contact.find_by(id: c)}
-        # else
-        #   render :new
-        # end
         if @reminder.save
           redirect_to user_reminder_url(@user, @reminder)
         else
@@ -82,7 +71,9 @@ class RemindersController < ApplicationController
     contact_ids = params[:reminder][:contact_ids]
     contact_ids.reject!{ |c| c.empty? }
     @reminder = Reminder.find(params[:id])
-    @reminder.update_attributes(reminder_params)
+    @reminder.assign_attributes(reminder_params)
+    @reminder.time_to_go_out += 21600
+    @reminder.save
     if !contact_ids.empty?
       @reminder.contacts = []
       contact_ids.each {|id| @reminder.contacts << Contact.find_by(id: id)}
@@ -97,7 +88,7 @@ class RemindersController < ApplicationController
     redirect_to user_reminders_url(params[:user_id])
   end
 
-  
+
   private
   def reminder_params
   	params.require(:reminder).permit(:body, :time_to_go_out, :number_of_recurrences, :time_of_recurrence)

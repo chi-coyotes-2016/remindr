@@ -5,6 +5,10 @@ class Reminder < ActiveRecord::Base
   validates :number_of_recurrences, numericality: { greater_than_or_equal_to: 0, message: "must be at least 0" }
   validates :author, presence: true
 
+  def central_time
+    (self.time_to_go_out - 21600).strftime('%Y-%m-%dT%H:%M:%S')
+  end
+
   def send_sms
   	client = Twilio::REST::Client.new ENV["TWILIO_SID"], ENV["TWILIO_AUTH_TOKEN"]
   	reminder = self

@@ -6,7 +6,7 @@
       <h1 class="panel-title">Edit a Reminder</h1>
     </div>
     <div class="panel-body">
-      
+
       <%= form_for :reminder, url: user_reminder_url(current_user, @reminder), method: "patch", class: 'form-horizontal' do |f| %>
 
       <div>
@@ -24,12 +24,12 @@
 
       <div>
         <%= f.label(:time_to_go_out, "Reminder time") %>
-        <%= f.datetime_field :time_to_go_out, class: "form-control" %>
+        <%= f.datetime_field :time_to_go_out, value: @reminder.central_time, class: "form-control" %>
       </div>
 
       <div>
         <%= f.label(:number_of_recurrences, "Number of recurrences") %>
-        <%= f.text_field :number_of_recurrences, value: "0", class: "form-control" %>
+        <%= f.text_field :number_of_recurrences, class: "form-control" %>
       </div>
       <div>
         <%= f.label(:time_of_recurrence, "How often?")%><%= f.select(:time_of_recurrence, ['every ten minutes','hourly', 'every 6 hours', 'every 12 hours', 'daily', 'weekly', 'monthly'], id: "select", include_blank: true) %>
