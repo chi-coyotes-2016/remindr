@@ -2,8 +2,8 @@ class Reminder < ActiveRecord::Base
   belongs_to :author, class_name: "User"
   has_many :recipients
   has_many :contacts, through: :recipients
-  validates :number_of_recurrences, numericality: { greater_than_or_equal_to: 0 }
-
+  validates :number_of_recurrences, numericality: { greater_than_or_equal_to: 0, message: "must be at least 0" }
+  validates :author, presence: true
 
   def send_sms
   	client = Twilio::REST::Client.new ENV["TWILIO_SID"], ENV["TWILIO_AUTH_TOKEN"]
@@ -11,10 +11,9 @@ class Reminder < ActiveRecord::Base
   	reminder.contacts.each do | contact |
 	  	client.messages.create(
 	  		from: '+19293684474',
-	  		to: contact.phone_number,
+	  		to: "+1#{contact.phone_number}",
 	  		body: reminder.body
 	  		)
-	  	puts "sent reminder to #{contact.name} at #{contact.phone_number}"
 	  end
 	  if self.number_of_recurrences == 0
 	  	self.destroy
@@ -24,7 +23,6 @@ class Reminder < ActiveRecord::Base
 	  	case self.time_of_recurrence
 	  	when 'every ten minutes'
 	  		self.time_to_go_out = old_time + 600
-	  		puts "new time to send is #{self.time_to_go_out}"
 	  	when 'hourly'
 	  		self.time_to_go_out = old_time + 3600
 	  	when 'every 6 hours'
