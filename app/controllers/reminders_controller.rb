@@ -7,6 +7,16 @@ class RemindersController < ApplicationController
       @reminders = @user.reminders.order(time_to_go_out: :desc)
     end
   end
+
+  def show 
+    if logged_in?
+      @user = User.find(params[:user_id])
+      @reminder = Reminder.find_by(id: params[:id])
+      if @reminder == nil 
+        redirect_to new_user_reminder_url(@user)
+      end
+    end
+  end
   
   def new
   	if logged_in?
