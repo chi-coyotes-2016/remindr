@@ -3,10 +3,12 @@
 
     <%= link_to 'Create Group', new_user_group_path(@user), class: "btn btn-primary" %>
 </div>
-<% if @contacts %>
-	<ul>
-		<% @contacts.each do |contact| %>
-			<li><%= "Name: " + contact.name + " Phone number: " + contact.phone_number %></li> 
-		<% end %>
-	</ul>
-<% end %>
+<div class="container">
+	<% if @contacts %>
+		<ul>
+			<% @contacts.each do |contact| %>
+				<li> <%= link_to contact.name, user_contact_path(contact.user, contact) %></li> 
+			<% end %>
+		</ul>
+	<% end %>
+</div>
