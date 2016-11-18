@@ -17,15 +17,30 @@ class RemindersController < ApplicationController
   end
 
   def create
+    @user = User.find_by(id: params[:user_id])
   	if logged_in?
-  		if params[:user_id] == current_user.id
-
+  		if @user == current_user
+        @reminder = Reminder.new(reminder_params)
+        @reminder.author = current_user
+        params[:reminder][:contact_id].reject!{ |c| c.empty? }
+        # p params[:reminder][:group_id].any?
+        if params[:reminder][:group_id].length != 0
+          @reminder.contacts << Group.find_by(id: params[:reminder][:group_id]).contacts
+        elsif params[:reminder][:contact_id].any?
+          @reminder.contacts << params[:reminder][:contact_id].map {|c| Contact.find_by(id: c)}
+        else
+          render :new
+        end
+        if @reminder.save
+          redirect_to @reminder
+        else
+          render :new
+        end
   		else
-
+        render :new
   		end
-
   	else
-
+      redirect_to :root
   	end
 
   end
@@ -33,7 +48,7 @@ class RemindersController < ApplicationController
   
   private
   def reminder_params
-  	params.require(:article).permit(:group_id, :contact_id, :body, :time_to_go_out, :number_of_recurrences)
+  	params.require(:reminder).permit(:body, :time_to_go_out, :number_of_recurrences)
   end
 
 end
