@@ -1,35 +1,28 @@
-# Remindr [![Build Status](https://travis-ci.org/chi-coyotes-2016/remindr.svg?branch=master)](https://travis-ci.org/chi-coyotes-2016/remindr)
+# Remindr
+![Image for Remindr project](http://gdurl.com/apc6)
+To view a deployed version click [here](https://vast-reef-98615.herokuapp.com).
 
-# Purpose:
-This is a web app that allows users to store a list of contacts and schedule reminders to be sent to a contact or a group of contacts on one's contact list via text messages. The reminders may be recurring and users can specify the number of times and frequency at which the reminder can be sent.
+NOTE: Texting through Twilio and the Heroku Scheduler on the deployed version have been turned off in order to refrain from accruing charges.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Purpose
+Built with Rails, this is a web app that allows users to store a list of contacts and schedule reminders to be sent to a contact or a group of contacts on one's contact list via text messages. The reminders may be recurring and users can specify the number of times and frequency at which the reminder can be sent.
 
-Things you may want to cover:
 
-* Ruby version 2.3.1
+<!-- ## What I learned -->
 
-# System Dependencies
+## Code Sample
+![Image for Remindr code sample](http://gdurl.com/xRTo)
+
+## Tech Used
 
 * Rails 5
+* Ruby Version 2.3.1
 * `twilio-ruby` gem
 * Must be deployed to Heroku
 * Heroku Scheduler
 * postgresql
 
-* Configuration
-
-# How to run the test suite
-
-* Run `rails spec`
-* Alternately the repo is configured to work with Travis CI
-
-# Deployment instructions
-
-* Push to Heroku and configure Scheduler accordingly
-
-# Contributors
+## Contributors
 
 * [@hopkins571](https://github.com/hopkins571)
 * [@busster](https://github.com/busster)
