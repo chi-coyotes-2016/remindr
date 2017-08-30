@@ -24,7 +24,7 @@ Built with Rails, this is a web app that allows users to store a list of contact
 
 ## Contributors
 
-* [@hopkins571](https://github.com/hopkins571)
+* [@hamsopkins](https://github.com/hamsopkins)
 * [@busster](https://github.com/busster)
 * [@jsumulong](https://github.com/JSumulong)
 
